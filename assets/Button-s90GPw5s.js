@@ -1,0 +1,1 @@
+import{j as s}from"./index-BYK2tOFt.js";const c={primary:"btn-primary",accent:"btn-accent",secondary:"btn-secondary"};function m({variant:t="primary",className:n="",type:r="button",children:a,...o}){return s.jsx("button",{type:r,className:`btn ${c[t]} ${n}`,...o,children:a})}export{m as B};
