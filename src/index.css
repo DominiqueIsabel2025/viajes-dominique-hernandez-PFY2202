@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-brand-50/40 font-sans text-slate-800 antialiased;
+    background-image: radial-gradient(circle at 12% -5%, rgba(32, 169, 172, 0.16), transparent 38%),
+      radial-gradient(circle at 95% 8%, rgba(249, 115, 22, 0.1), transparent 30%);
+    background-attachment: fixed;
+  }
+  main > * {
+    @apply animate-subir-suave;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Clases reutilizables con @apply para no repetir utilidades en el JSX. */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition
+           focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2
+           disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply bg-brand-700 text-white shadow-sm hover:bg-brand-800;
+  }
+  .btn-accent {
+    @apply bg-sol-500 text-white shadow-sm hover:bg-sol-600;
+  }
+  .btn-secondary {
+    @apply border border-brand-200 bg-white text-brand-800 hover:bg-brand-50;
+  }
+  .card {
+    @apply rounded-2xl border border-brand-100 bg-white p-5 shadow-sm shadow-brand-900/5;
+  }
+  /* Portada de las tarjetas: degradado + patrón de puntos sutil */
+  .portada {
+    position: relative;
+    overflow: hidden;
+  }
+  .portada::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.28) 1.5px, transparent 1.5px);
+    background-size: 16px 16px;
+    pointer-events: none;
+  }
+  .chip {
+    @apply rounded-full border border-brand-200 bg-white px-3.5 py-1.5 text-sm font-medium text-brand-800 transition
+           hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500;
+  }
+  .chip-activo {
+    @apply border-brand-700 bg-brand-700 text-white hover:bg-brand-800;
+  }
+  .input {
+    @apply w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400
+           focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30;
+  }
+  .etiqueta {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold;
+  }
+}
